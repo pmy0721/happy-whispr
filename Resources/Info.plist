@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>Happy Whispr</string>
+    <key>CFBundleDisplayName</key>
+    <string>Happy Whispr</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.happywhispr.app</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleExecutable</key>
+    <string>HappyWhispr</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Happy Whispr needs microphone access to capture your voice for speech-to-text transcription.</string>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>Happy Whispr needs accessibility access to listen for the backtick key globally and paste text into your terminal.</string>
+</dict>
+</plist>

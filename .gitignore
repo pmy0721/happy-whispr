@@ -1,1 +1,22 @@
 .DS_Store
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Xcode local state
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# macOS app packaging output
+*.app/
+*.dSYM/
+
+# Generated icon export bundle
+Sources/HappyWhispr/happy-whispr-icon/
+
+# Local environment
+.env
+.env.*
+!.env.example
