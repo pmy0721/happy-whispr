@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happy Whispr - 按住说话，松开粘贴</title>
+    <meta
+      name="description"
+      content="Happy Whispr 是一个原生 macOS 菜单栏语音输入工具。按住 MacBook 左上角的 ~/· 键说话，松开后自动转写并粘贴到当前光标位置。"
+    />
+    <meta property="og:title" content="Happy Whispr" />
+    <meta property="og:description" content="按住 ~/· 键说话，松开自动转写并粘贴。" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="./assets/app-icon.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Happy Whispr 首页">
+        <img src="./assets/app-icon.png" alt="" />
+        <span>Happy Whispr</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#workflow">工作流</a>
+        <a href="#privacy">隐私</a>
+        <a href="#install">安装</a>
+        <a href="https://github.com/pmy0721/happy-whispr">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Native macOS menu bar dictation</p>
+          <h1>按住 <kbd class="mac-key"><span>~</span><span>·</span></kbd> 说话，松开自动粘贴。</h1>
+          <p class="lead">
+            Happy Whispr 是为中文开发者做的极简语音输入工具。它常驻菜单栏，把语音转成文字，
+            再送回 Ghostty、Claude Code、终端或任何正在输入的地方。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/pmy0721/happy-whispr">查看 GitHub</a>
+            <a class="button secondary" href="#install">本地构建</a>
+          </div>
+          <div class="facts" aria-label="项目特点">
+            <span>纯 Swift</span>
+            <span>Keychain 存储</span>
+            <span>OpenRouter Whisper</span>
+          </div>
+        </div>
+
+        <div class="hero-stage" aria-label="Happy Whispr 使用演示">
+          <div class="desktop-strip">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="menu-icon" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="terminal-window">
+            <div class="terminal-head">
+              <span></span><span></span><span></span>
+              <b>ghostty · claude-code</b>
+            </div>
+            <div class="terminal-body">
+              <p><em>$</em> claude</p>
+              <p class="typed">帮我把这个 macOS 工具发布成一个可下载的应用</p>
+              <p class="cursor">▋</p>
+            </div>
+          </div>
+          <div class="recorder-card">
+            <div class="wave-live" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <p>正在录音，松开 <kbd class="mac-key small"><span>~</span><span>·</span></kbd> 开始转写</p>
+            <span class="record-dot"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section split" id="workflow">
+        <div>
+          <p class="eyebrow">One gesture</p>
+          <h2>它只做一件事：把说话变成当前位置的文字。</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span>01</span>
+            <h3>按住 ~/· 键</h3>
+            <p>短按仍然是普通字符，按住超过阈值才进入录音。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>采集并转写</h3>
+            <p>AVAudioEngine 在内存中采集 WAV，发送到 OpenRouter Whisper。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>粘贴到光标</h3>
+            <p>通过剪贴板和 Cmd+V，把结果送回当前前台应用。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section feature-grid">
+        <article>
+          <h3>菜单栏常驻</h3>
+          <p>没有窗口负担，不打断开发流。状态图标会跟随录音、转写和错误状态变化。</p>
+        </article>
+        <article>
+          <h3>为终端输入设计</h3>
+          <p>适合 Ghostty、Claude Code 和长命令描述，不需要切换输入法或调用系统听写。</p>
+        </article>
+        <article>
+          <h3>原生权限模型</h3>
+          <p>麦克风、辅助功能、Keychain 都使用 macOS 原生能力，行为清楚可控。</p>
+        </article>
+        <article>
+          <h3>小而可改</h3>
+          <p>Swift Package 项目结构简单，服务边界清楚，适合继续扩展快捷键和本地模型。</p>
+        </article>
+      </section>
+
+      <section class="section privacy" id="privacy">
+        <div class="privacy-copy">
+          <p class="eyebrow">Security posture</p>
+          <h2>密钥进 Keychain，音频不落盘。</h2>
+          <p>
+            API Key 只保存在 macOS Keychain。录音在内存中编码为 WAV，转写请求只在你松开按键后发出。
+            它不会把密钥写入配置文件，也不会把录音缓存到磁盘。
+          </p>
+        </div>
+        <div class="privacy-panel">
+          <div><b>Keychain</b><span>OpenRouter API Key</span></div>
+          <div><b>Memory</b><span>WAV buffer only</span></div>
+          <div><b>Pasteboard</b><span>Transcript injection</span></div>
+        </div>
+      </section>
+
+      <section class="section install" id="install">
+        <div>
+          <p class="eyebrow">Build locally</p>
+          <h2>现在从源码构建。</h2>
+          <p>项目已经发布在 GitHub。克隆、构建、打包成本地 app 即可试用。</p>
+        </div>
+        <pre><code>git clone https://github.com/pmy0721/happy-whispr.git
+cd happy-whispr
+swift build
+Scripts/build-app.sh
+open ".build/Happy Whispr.app"</code></pre>
+      </section>
+
+      <section class="section faq">
+        <h2>开始前要知道的几件事</h2>
+        <details>
+          <summary>为什么需要辅助功能权限？</summary>
+          <p>应用需要全局监听 MacBook 左上角的 ~/· 键，并在转写完成后向当前应用合成粘贴事件。</p>
+        </details>
+        <details>
+          <summary>为什么不用系统听写？</summary>
+          <p>Happy Whispr 面向开发场景，强调按住说话、松手粘贴、可选择 Whisper 模型和更短的操作链路。</p>
+        </details>
+        <details>
+          <summary>现在可以直接下载安装包吗？</summary>
+          <p>当前版本先提供源码构建。后续可以加入 DMG、签名和自动更新。</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <span>Happy Whispr</span>
+      <a href="https://github.com/pmy0721/happy-whispr">github.com/pmy0721/happy-whispr</a>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
