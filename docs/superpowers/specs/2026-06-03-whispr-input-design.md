@@ -1,4 +1,4 @@
-# Whispr Input — 设计文档
+# Happy Whispr — 设计文档
 
 > 中文语音输入到 Ghostty + Claude Code 的 macOS 原生工具
 > 2026-06-03
@@ -232,10 +232,10 @@ keyDown(keyCode=50, 反引号)
 ## 8. 项目结构
 
 ```
-whispr-input/
-├── WhisprInput.xcodeproj
-├── WhisprInput/
-│   ├── WhisprInputApp.swift          # @main 入口
+happy-whispr/
+├── HappyWhispr.xcodeproj
+├── HappyWhispr/
+│   ├── HappyWhisprApp.swift          # @main 入口
 │   ├── AppDelegate.swift              # NSApplicationDelegate，菜单栏生命周期
 │   ├── Services/
 │   │   ├── KeyboardMonitor.swift      # CGEvent Tap 键盘监听
